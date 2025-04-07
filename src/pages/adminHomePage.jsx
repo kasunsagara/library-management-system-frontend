@@ -1,8 +1,8 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { BsGraphUp, BsBoxSeam, BsCart4, BsPeopleFill } from "react-icons/bs";
-import AdminProductsPage from "./admin/adminProductsPage";
-import AddProductForm from "./admin/addProductForm";
+import { BsGraphUp, BsBook, BsCart4, BsPeopleFill } from "react-icons/bs";
+import AdminBooks from "./admin/adminBooks";
+import AddBook from "./admin/addBook";
 import EditProductForm from "./admin/editProductForm";
 import WelcomeAdmin from "./admin/welcomeAdmin";
 import { useEffect, useState } from "react";
@@ -35,7 +35,7 @@ export default function AdminHomePage() {
   return (
     <div className="bg-gray-100 w-full h-screen flex">
       {/* Sidebar */}
-      <div className="w-[20%] h-screen bg-gradient-to-b from-blue-600 to-blue-500 flex flex-col items-center py-8 shadow-lg">
+      <div className="w-[20%] h-screen bg-blue-600  flex flex-col items-center py-8 shadow-lg">
         <img
         src="/logo.png" // <- Replace with your actual path
         alt="Logo"
@@ -43,28 +43,28 @@ export default function AdminHomePage() {
         />
         <h1 className="text-2xl font-bold text-white text-center mb-8">Library Management System</h1>
         <Link
-          className="flex flex-row items-center mb-6 text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
+          className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
           to="/admin/dashboard"
         >
           <BsGraphUp className="mr-3 text-xl" /> Dashboard
         </Link>
 
         <Link
-          className="flex flex-row items-center mb-6 text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
-          to="/admin/products"
+          className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
+          to="/admin/books"
         >
-          <BsBoxSeam className="mr-3 text-xl" /> Products
+          <BsBook className="mr-3 text-xl" /> Books
         </Link>
 
         <Link
-          className="flex flex-row items-center mb-6 text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
+          className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
           to="/admin/orders"
         >
           <BsCart4 className="mr-3 text-xl" /> Orders
         </Link>
 
         <Link
-          className="flex flex-row items-center text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
+          className="flex flex-row items-center text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
           to="/admin/customers"
         >
           <BsPeopleFill className="mr-3 text-xl" /> Customers
@@ -72,14 +72,14 @@ export default function AdminHomePage() {
       </div>
 
       {/* Main Content */}
-      <div className="w-[80%] h-screen overflow-auto bg-white">
+      <div className="w-[80%] h-screen overflow-auto bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
         <Header />
         {user !== null ? (
           <Routes>
             <Route path="/" element={<WelcomeAdmin user={user} />} />
             <Route path="/" element={<h1 className="text-3xl font-semibold text-gray-800">Dashboard</h1>} />
-            <Route path="/products" element={<AdminProductsPage />} />
-            <Route path="/products/addProduct" element={<AddProductForm />} />
+            <Route path="/books" element={<AdminBooks />} />
+            <Route path="/books/addBook" element={<AddBook />} />
             <Route path="/products/editProduct" element={<EditProductForm />} />
             <Route path="/customers" element={<h1 className="text-3xl font-semibold text-gray-800">Customers</h1>} />
             <Route path="/*" element={<h1 className="text-3xl font-semibold text-gray-800">404 - Page Not Found</h1>} />

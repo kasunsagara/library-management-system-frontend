@@ -1,4 +1,5 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 import { BsGraphUp, BsBoxSeam, BsCart4, BsPeopleFill } from "react-icons/bs";
 import AdminProductsPage from "./admin/adminProductsPage";
 import AddProductForm from "./admin/addProductForm";
@@ -30,12 +31,6 @@ export default function AdminHomePage() {
         navigate("/login");
       });
   }, [navigate]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    toast.success('Logged out successfully');
-    window.location.href = '/login'; // Redirect to login page after logout
-  };
 
   return (
     <div className="bg-gray-100 w-full h-screen flex">
@@ -74,17 +69,11 @@ export default function AdminHomePage() {
         >
           <BsPeopleFill className="mr-3 text-xl" /> Customers
         </Link>
-
-        <button
-              onClick={handleLogout}
-              className="mt-8 w-28 py-2 px-4 bg-red-600 text-white rounded text-xl hover:bg-red-700"
-            >
-              Logout
-            </button>
       </div>
 
       {/* Main Content */}
-      <div className="w-[80%] h-screen p-8 overflow-auto">
+      <div className="w-[80%] h-screen overflow-auto bg-white">
+        <Header />
         {user !== null ? (
           <Routes>
             <Route path="/" element={<WelcomeAdmin user={user} />} />

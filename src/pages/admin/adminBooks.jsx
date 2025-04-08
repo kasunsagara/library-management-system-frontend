@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { FaPlus, FaTrash } from "react-icons/fa";
-import { FaPencil } from "react-icons/fa6";
+import {  FaPlus, FaTrash, FaPencilAlt  } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AdminBooks() {
@@ -121,7 +120,7 @@ export default function AdminBooks() {
                           });
                         }}
                       >
-                        <FaPencil />
+                        <FaPencilAlt/>
                       </button>
                     </td>
                   </tr>

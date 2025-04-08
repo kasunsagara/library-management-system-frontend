@@ -25,7 +25,7 @@ export default function LoginPage() {
         if (res.data.user.role === 'admin') {
           navigate('/admin');
         } else {
-          navigate('/');
+          navigate('/user');
         }
       })
       .catch((err) => {

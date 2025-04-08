@@ -30,9 +30,9 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-8">
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-lg p-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-8">Admin Dashboard</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           {/* Books Card */}
-          <div className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white p-6 rounded-2xl shadow-md flex items-center hover:scale-[1.02] transition-transform">
+          <div className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white p-6 rounded-2xl shadow-md flex items-center hover:scale-[1.02] transition-transform max-w-2xl">
             <div className="text-white text-5xl bg-white/10 p-4 rounded-full">
               <FaBook />
             </div>
@@ -43,7 +43,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Users Card */}
-          <div className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white p-6 rounded-2xl shadow-md flex items-center hover:scale-[1.02] transition-transform">
+          <div className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white p-6 rounded-2xl shadow-md flex items-center hover:scale-[1.02] transition-transform max-w-2xl">
             <div className="text-white text-5xl bg-white/10 p-4 rounded-full">
               <FaUsers />
             </div>

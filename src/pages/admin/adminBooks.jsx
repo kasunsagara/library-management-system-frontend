@@ -37,7 +37,7 @@ export default function AdminBooks() {
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white border border-gray-400 rounded-lg">
               <thead>
-                <tr className="bg-gray-100">
+                <tr className="bg-gray-200">
                   <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
                     Book ID
                   </th>

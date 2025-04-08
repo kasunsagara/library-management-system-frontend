@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import { BsGraphUp, BsBook, BsCart4, BsPeopleFill } from "react-icons/bs";
 import AdminBooks from "./admin/adminBooks";
 import AddBook from "./admin/addBook";
-import EditProductForm from "./admin/editProductForm";
+import EditBook from "./admin/editBook";
 import WelcomeAdmin from "./admin/welcomeAdmin";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -80,7 +80,7 @@ export default function AdminHomePage() {
             <Route path="/" element={<h1 className="text-3xl font-semibold text-gray-800">Dashboard</h1>} />
             <Route path="/books" element={<AdminBooks />} />
             <Route path="/books/addBook" element={<AddBook />} />
-            <Route path="/products/editProduct" element={<EditProductForm />} />
+            <Route path="/books/editBook" element={<EditBook />} />
             <Route path="/customers" element={<h1 className="text-3xl font-semibold text-gray-800">Customers</h1>} />
             <Route path="/*" element={<h1 className="text-3xl font-semibold text-gray-800">404 - Page Not Found</h1>} />
           </Routes>

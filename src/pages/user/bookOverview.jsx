@@ -6,12 +6,14 @@ export default function BookOverview() {
   const { bookId } = useParams();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const fetchBook = async () => {
       try {
         const res = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/books/" + bookId);
         setBook(res.data);
+        setSelectedImage(res.data.images[0]); // default to first image
         setLoading(false);
       } catch (err) {
         console.error("Failed to fetch book:", err);
@@ -32,11 +34,27 @@ export default function BookOverview() {
 
         <div className="flex flex-col md:flex-row gap-8">
           <div>
+            {/* Selected main image */}
             <img
-              src={book.images[0]}
+              src={selectedImage}
               alt={book.bookName}
-              className="w-48 h-64 object-cover rounded-md shadow-md mr-6"
+              className="w-48 h-64 object-cover rounded-md shadow-md mb-4"
             />
+
+            {/* Thumbnail selector */}
+            <div className="flex gap-2 flex-wrap">
+              {book.images.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={`Thumbnail ${index + 1}`}
+                  onClick={() => setSelectedImage(img)}
+                  className={`w-12 h-16 object-cover rounded cursor-pointer border ${
+                    selectedImage === img ? "border-blue-500" : "border-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
           <div className="flex-1">

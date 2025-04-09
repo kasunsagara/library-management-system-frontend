@@ -43,7 +43,7 @@ export default function UserBooks() {
       <div className="absolute w-full flex justify-center z-50">
         <input
           type="text"
-          className="w-1/2 p-3 mt-2 rounded-lg bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 text-white placeholder:text-gray-200 focus:outline-none focus:ring focus:ring-blue-300"
+          className="w-1/2 p-3 mt-2 rounded-lg bg-white backdrop-filter backdrop-blur-lg bg-opacity-40 text-white placeholder:text-gray-100 focus:outline-none focus:ring focus:ring-blue-300"
           placeholder="Search Books by Title"
           onChange={search}
           value={query}

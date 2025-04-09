@@ -16,7 +16,7 @@ export default function BookCard(props) {
       <div className="flex flex-col justify-between flex-1">
         <div>
           <h2 className="text-[25px] font-bold text-blue-800 mb-1">{book.bookName}</h2>
-          <p className="text-[16px] text-gray-900">Author Name: {book.authorName}</p>
+          <p className="text-[16px] text-gray-900">Author: {book.authorName}</p>
           <p className="text-[16px] text-gray-900">Published: {book.publishedDate}</p>
           <p className="text-[16px] text-gray-900">Book ID: {book.bookId}</p>
         </div>

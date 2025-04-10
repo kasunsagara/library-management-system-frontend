@@ -8,7 +8,7 @@ export default function EditBook() {
   const navigate = useNavigate()
   const book = location.state.book
   if(book == null){
-    navigate("/admin/books")
+    navigate("/librarian/books")
   }
   const [bookId, setBookId] = useState(book.bookId);
   const [bookName, setBookName] = useState(book.bookName);
@@ -46,7 +46,7 @@ export default function EditBook() {
           Authorization : "Bearer "+token
         }
       })
-      navigate("/admin/books")
+      navigate("/librarian/books")
       toast.success("Book updated successfully")
     }catch(err){
       toast.error("Failed to update book")

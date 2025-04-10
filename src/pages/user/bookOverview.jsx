@@ -24,8 +24,20 @@ export default function BookOverview() {
     fetchBook();
   }, [bookId]);
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
-  if (!book) return <p className="text-center mt-10 text-red-600">Book not found.</p>;
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+        <div className="w-full h-full flex justify-center items-center">
+            {/* Loading Spinner */}
+            <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
+          </div>
+      </div>
+    );
+  }
+  
+  if (!book) {
+    return <p className="text-center mt-10 text-red-600">Book not found.</p>;
+  }  
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 py-10 flex items-center justify-center">

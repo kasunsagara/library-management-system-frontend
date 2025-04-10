@@ -53,17 +53,20 @@ export default function AdminUsers() {
       });
 
       setUserData(userData.filter((user) => user.email !== email));
-      toast.success("Customer deleted successfully");
+      toast.success("User deleted successfully");
     } catch (error) {
-      console.error("Error deleting customer:", error);
-      toast.error("Failed to delete customer.");
+      console.error("Error deleting user:", error);
+      toast.error("Failed to delete user.");
     }
   };
 
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-        <div className="w-[60px] h-[60px] border-[4px] border-gray-200 border-b-[#3b82f6] animate-spin rounded-full"></div>
+        <div className="w-full h-full flex justify-center items-center">
+            {/* Loading Spinner */}
+            <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
+          </div>
       </div>
     );
   }

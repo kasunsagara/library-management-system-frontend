@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/homePage'
 import LoginPage from './pages/loginPage'
 import SignupPage from './pages/signupPage'
-import AdminHomePage from './pages/adminHomePage'
+import LibrarianHomePage from './pages/librarianHomePage'
 import UserHomePage from './pages/userHomePage'
 import BookOverview from "./pages/user/bookOverview";
 import Profile from './components/profile'
@@ -24,7 +24,7 @@ function App() {
 
         <Route path="/signup" element={<SignupPage />} />
 
-        <Route path="/admin/*" element={<AdminHomePage />} />
+        <Route path="/librarian/*" element={<LibrarianHomePage />} />
 
         <Route path="/user/*" element={<UserHomePage />} />
 

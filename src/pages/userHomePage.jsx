@@ -68,7 +68,7 @@ export default function UserHomePage() {
         ) : (
           <div className="w-full h-full flex justify-center items-center">
             {/* Loading Spinner */}
-            <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
           </div>
         )}
       </div>

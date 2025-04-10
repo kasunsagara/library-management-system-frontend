@@ -2,16 +2,16 @@ import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Welcome from "../components/welcome";
 import { FaChartBar, FaBook, FaUsers } from "react-icons/fa";
-import AdminBooks from "./admin/adminBooks";
-import AddBook from "./admin/addBook";
-import EditBook from "./admin/editBook";
-import AdminDashboard from "./admin/adminDashboard";
-import AdminUsers from "./admin/adminUsers";
+import LibrarianBooks from "./librarian/librarianBooks";
+import AddBook from "./librarian/addBook";
+import EditBook from "./librarian/editBook";
+import LibrarianDashboard from "./librarian/librarianDashboard";
+import LibrarianUsers from "./librarian/librarianUsers";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-export default function AdminHomePage() {
+export default function LibrarianHomePage() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
@@ -46,21 +46,21 @@ export default function AdminHomePage() {
         <h1 className="text-2xl font-bold text-white text-center mb-8">Library Management System</h1>
         <Link
           className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
-          to="/admin/dashboard"
+          to="/librarian/dashboard"
         >
           <FaChartBar className="mr-3 text-xl" /> Dashboard
         </Link>
 
         <Link
           className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
-          to="/admin/books"
+          to="/librarian/books"
         >
           <FaBook className="mr-3 text-xl" /> Books
         </Link>
 
         <Link
           className="flex flex-row items-center text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
-          to="/admin/users"
+          to="/librarian/users"
         >
           <FaUsers className="mr-3 text-xl" /> Users
         </Link>
@@ -72,17 +72,17 @@ export default function AdminHomePage() {
         {user !== null ? (
           <Routes>
             <Route path="/" element={<Welcome user={user} />} />
-            <Route path="/dashboard" element={<AdminDashboard />} />
-            <Route path="/books" element={<AdminBooks />} />
+            <Route path="/dashboard" element={<LibrarianDashboard />} />
+            <Route path="/books" element={<LibrarianBooks />} />
             <Route path="/books/addBook" element={<AddBook />} />
             <Route path="/books/editBook" element={<EditBook />} />
-            <Route path="/users" element={<AdminUsers />} />
+            <Route path="/users" element={<LibrarianUsers />} />
             <Route path="/*" element={<h1 className="text-3xl font-semibold text-gray-800">404 - Page Not Found</h1>} />
           </Routes>
         ) : (
           <div className="w-full h-full flex justify-center items-center">
             {/* Loading Spinner */}
-            <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
           </div>
         )}
       </div>

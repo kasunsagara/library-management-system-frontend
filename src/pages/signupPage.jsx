@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useRef } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import uploadMediaToSupabase from '../utils/mediaUpload';
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -9,16 +10,15 @@ export default function SignupPage() {
     lastName: '',
     email: '',
     password: '',
-    profilePicture: '',
   });
+  const [profileImageFile, setProfileImageFile] = useState(null);
 
   const emailRef = useRef(null);
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
   const passwordRef = useRef(null);
-  const profilePictureRef = useRef(null);
 
-  const navigate = useNavigate();  // For programmatically navigating after successful signup
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +35,19 @@ export default function SignupPage() {
   };
 
   const signup = async () => {
-    const { firstName, lastName, email, password, profilePicture } = formData;
+    const { firstName, lastName, email, password } = formData;
+
+    let profilePictureUrl =
+      'https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg'; // default fallback
+
+    if (profileImageFile) {
+      try {
+        profilePictureUrl = await uploadMediaToSupabase(profileImageFile);
+      } catch (uploadErr) {
+        toast.error("Profile picture upload failed");
+        return;
+      }
+    }
 
     try {
       const res = await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/users", {
@@ -43,9 +55,7 @@ export default function SignupPage() {
         lastName,
         email,
         password,
-        profilePicture:
-          profilePicture ||
-          'https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg',
+        profilePicture: profilePictureUrl,
       });
 
       if (res.data.error) {
@@ -53,8 +63,7 @@ export default function SignupPage() {
         return;
       }
       toast.success('Signup successful!');
-      
-      navigate('/login');  // Use navigate to go to login page after successful signup
+      navigate('/login');
     } catch (err) {
       toast.error(err.response?.data?.message || 'Something went wrong!');
       console.error(err);
@@ -126,7 +135,6 @@ export default function SignupPage() {
               type="password"
               value={formData.password}
               onChange={handleChange}
-              onKeyDown={(e) => handleKeyDown(e, profilePictureRef)}
               className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
               ref={passwordRef}
@@ -134,20 +142,19 @@ export default function SignupPage() {
           </div>
           <div>
             <label htmlFor="profilePicture" className="block text-sm font-medium text-blue-700 mb-1">
-              Profile Picture (URL)
+              Profile Picture
             </label>
             <input
               id="profilePicture"
               name="profilePicture"
-              type="text"
-              value={formData.profilePicture}
-              onChange={handleChange}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') signup();
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                if (e.target.files.length > 0) {
+                  setProfileImageFile(e.target.files[0]);
+                }
               }}
               className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Optional"
-              ref={profilePictureRef}
             />
           </div>
           <button

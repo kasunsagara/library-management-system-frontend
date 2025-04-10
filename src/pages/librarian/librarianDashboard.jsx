@@ -6,6 +6,8 @@ import { FaBook, FaUsers } from "react-icons/fa";
 export default function AdminDashboard() {
   const [totalBooks, setTotalBooks] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
+  const [loadingBooks, setLoadingBooks] = useState(true);
+  const [loadingUsers, setLoadingUsers] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -15,16 +17,39 @@ export default function AdminDashboard() {
       .get(import.meta.env.VITE_BACKEND_URL + "/api/books", {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setTotalBooks(res.data.length))
-      .catch(() => toast.error("Failed to fetch books. Please try again."));
+      .then((res) => {
+        setTotalBooks(res.data.length);
+        setLoadingBooks(false);
+      })
+      .catch(() => {
+        toast.error("Failed to fetch books. Please try again.");
+        setLoadingBooks(false);
+      });
 
     axios
       .get(import.meta.env.VITE_BACKEND_URL + "/api/users/all", {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setTotalUsers(res.data.length))
-      .catch(() => toast.error("Failed to fetch users. Please try again."));
+      .then((res) => {
+        setTotalUsers(res.data.length);
+        setLoadingUsers(false);
+      })
+      .catch(() => {
+        toast.error("Failed to fetch users. Please try again.");
+        setLoadingUsers(false);
+      });
   }, []);
+
+  if (loadingBooks || loadingUsers) {
+    return (
+      <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+         <div className="w-full h-full flex justify-center items-center">
+            {/* Loading Spinner */}
+            <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
+          </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-8">

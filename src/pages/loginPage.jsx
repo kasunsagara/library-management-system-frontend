@@ -22,8 +22,8 @@ export default function LoginPage() {
         toast.success('Login successful!');
 
         localStorage.setItem('token', res.data.token);
-        if (res.data.user.role === 'admin') {
-          navigate('/admin');
+        if (res.data.user.role === 'librarian') {
+          navigate('/librarian');
         } else {
           navigate('/user');
         }

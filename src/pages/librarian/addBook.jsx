@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import uploadMediaToSupabase from "../../utils/mediaUpload";
 
-export default function AddBookForm() {
+export default function AddBook() {
   const [bookId, setBookId] = useState("");
   const [bookName, setBookName] = useState("");
   const [authorName, setAuthorName] = useState("");
@@ -40,7 +40,7 @@ export default function AddBookForm() {
           Authorization: "Bearer " + token,
         },
       });
-      navigate("/admin/books");
+      navigate("/librarian/books");
       toast.success("Book added successfully");
     } catch (err) {
       toast.error("Failed to add book");

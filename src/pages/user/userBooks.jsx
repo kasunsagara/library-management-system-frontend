@@ -65,12 +65,12 @@ export default function UserBooks() {
 
       {/* Loading Spinner */}
       {loadingStatus === "loading" && (
-        <div className="w-full h-screen flex items-center justify-center z-10">
-          <div className="relative">
-            <div className="absolute inset-0 rounded-full h-32 w-32 bg-gradient-to-tr from-blue-400 to-blue-600 opacity-30 blur-lg"></div>
-            <div className="animate-spin rounded-full h-32 w-32 border-[6px] border-gray-300 border-t-blue-500 border-t-8 shadow-lg"></div>
+        <div className="min-h-screen flex justify-center items-center">
+        <div className="w-full h-full flex justify-center items-center">
+            {/* Loading Spinner */}
+            <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
           </div>
-        </div>
+      </div>
       )}
     </div>
   );

@@ -1,38 +1,55 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import {  FaPlus, FaTrash, FaPencilAlt  } from "react-icons/fa";
+import { FaPlus, FaTrash, FaPencilAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AdminBooks() {
   const [books, setBooks] = useState([]);
   const [booksLoaded, setBooksLoaded] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!booksLoaded) {
-      axios.get(import.meta.env.VITE_BACKEND_URL + "/api/books").then((res) => {
-        setBooks(res.data);
-        console.log(res.data);
-        setBooksLoaded(true);
-      });
+      axios
+        .get(import.meta.env.VITE_BACKEND_URL + "/api/books")
+        .then((res) => {
+          setBooks(res.data);
+          setBooksLoaded(true);
+        })
+        .catch((err) => {
+          toast.error("Failed to load books");
+          console.error(err);
+        });
     }
   }, [booksLoaded]);
 
-  const navigate = useNavigate();
+  if (!booksLoaded) {
+    return (
+      <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+        <div className="w-full h-full flex justify-center items-center">
+          {/* Loading Spinner */}
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-6 relative">
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-md p-8">
-  
-
         <h1 className="text-2xl font-bold text-gray-800 mb-6">Books</h1>
+
         <Link
-        to={"/admin/books/addBook"}
-        className="absolute top-0 right-0 mt-10 mr-10 flex items-center justify-center w-14 h-14 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-700 transition-all"
+          to={"/librarian/books/addBook"}
+          className="absolute top-0 right-0 mt-10 mr-10 flex items-center justify-center w-14 h-14 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-700 transition-all"
         >
-        <FaPlus />
+          <FaPlus />
         </Link>
-        {booksLoaded ? (
+
+        {books.length === 0 ? (
+          <p className="text-gray-600 mt-4">No books found.</p>
+        ) : (
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white border border-gray-400 rounded-lg">
               <thead>
@@ -55,7 +72,7 @@ export default function AdminBooks() {
                   <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
                     Description
                   </th>
-                  <th className="text-center px-6 py-4 border border-gray-400 text-gray-7800 font-medium">
+                  <th className="text-center px-6 py-4 border border-gray-400 text-gray-800 font-medium">
                     Action
                   </th>
                 </tr>
@@ -63,9 +80,9 @@ export default function AdminBooks() {
               <tbody>
                 {books.map((book, index) => (
                   <tr
-                    key={index}
+                    key={book.bookId}
                     className={`hover:bg-gray-50 ${
-                      index % 2 === 0 ? "bg-white" : "bg-white"
+                      index % 2 === 0 ? "bg-white" : "bg-gray-100"
                     }`}
                   >
                     <td className="px-6 py-4 border border-gray-400 text-gray-700">
@@ -91,11 +108,13 @@ export default function AdminBooks() {
                         className="text-red-500 hover:text-red-700 mr-2"
                         title="Delete"
                         onClick={() => {
+                          const confirmDelete = window.confirm("Are you sure you want to delete this book?");
+                          if (!confirmDelete) return;
+
                           const token = localStorage.getItem("token");
                           axios
                             .delete(
-                              import.meta.env.VITE_BACKEND_URL +
-                                `/api/books/${book.bookId}`,
+                              import.meta.env.VITE_BACKEND_URL + `/api/books/${book.bookId}`,
                               {
                                 headers: {
                                   Authorization: `Bearer ${token}`,
@@ -106,6 +125,10 @@ export default function AdminBooks() {
                               console.log(res.data);
                               toast.success("Book deleted successfully");
                               setBooksLoaded(false);
+                            })
+                            .catch((err) => {
+                              toast.error("Failed to delete book");
+                              console.error(err);
                             });
                         }}
                       >
@@ -115,22 +138,18 @@ export default function AdminBooks() {
                         className="text-blue-500 hover:text-blue-700"
                         title="Edit"
                         onClick={() => {
-                          navigate("/admin/books/editBook", {
+                          navigate("/librarian/books/editBook", {
                             state: { book: book },
                           });
                         }}
                       >
-                        <FaPencilAlt/>
+                        <FaPencilAlt />
                       </button>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div>
-        ) : (
-          <div className="w-full h-full flex justify-center items-center">
-            <div className="w-[60px] h-[60px] border-[4px] border-gray-200 border-b-[#3b82f6] animate-spin rounded-full"></div>
           </div>
         )}
       </div>

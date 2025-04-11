@@ -3,7 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import uploadMediaToSupabase from "../../utils/mediaUpload";
-export default function EditBook() {
+export default function EditBookForm() {
   const location = useLocation()
   const navigate = useNavigate()
   const book = location.state.book
@@ -65,7 +65,7 @@ export default function EditBook() {
             <input
               disabled
               type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               value={bookId}
             />
           </div>
@@ -73,7 +73,7 @@ export default function EditBook() {
             <label className="text-gray-700 font-medium">Book Name</label>
             <input
               type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               value={bookName}
               onChange={(e) => setBookName(e.target.value)}
             />
@@ -82,7 +82,7 @@ export default function EditBook() {
             <label className="text-gray-700 font-medium">Author Name</label>
             <input
               type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               value={authorName}
               onChange={(e) => setAuthorName(e.target.value)}
             />
@@ -91,7 +91,7 @@ export default function EditBook() {
             <label className="text-gray-700 font-medium">Published Date</label>
             <input
               type="date"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               value={publishedDate}
               onChange={(e) => setPublishedDate(e.target.value)}
             />
@@ -100,7 +100,7 @@ export default function EditBook() {
             <label className="text-gray-700 font-medium">Upload Images</label>
             <input
               type="file"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               onChange={(e) => setImageFiles(e.target.files)}
               multiple
             />
@@ -109,7 +109,7 @@ export default function EditBook() {
             <label className="text-gray-700 font-medium">Stock</label>
             <input
               type="number"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               value={stock}
               onChange={(e) => setStock(e.target.value)}
             />
@@ -117,7 +117,7 @@ export default function EditBook() {
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium">Description</label>
             <textarea
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />

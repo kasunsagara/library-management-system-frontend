@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function BookOverview() {
@@ -7,37 +7,38 @@ export default function BookOverview() {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBook = async () => {
       try {
         const res = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/books/" + bookId);
         setBook(res.data);
-        setSelectedImage(res.data.images[0]); // default to first image
+        setSelectedImage(res.data.images[0]);
         setLoading(false);
       } catch (err) {
         console.error("Failed to fetch book:", err);
         setLoading(false);
       }
     };
-
     fetchBook();
   }, [bookId]);
+
+  const handleBorrowBook = () => {
+    navigate("/borrowBook", { state: { items: [{ bookId: book.bookId }] } });
+  };
 
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-        <div className="w-full h-full flex justify-center items-center">
-            {/* Loading Spinner */}
-            <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
-          </div>
+        <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
       </div>
     );
   }
-  
+
   if (!book) {
     return <p className="text-center mt-10 text-red-600">Book not found.</p>;
-  }  
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 py-10 flex items-center justify-center">
@@ -46,14 +47,11 @@ export default function BookOverview() {
 
         <div className="flex flex-col md:flex-row gap-8">
           <div>
-            {/* Selected main image */}
             <img
               src={selectedImage}
               alt={book.bookName}
               className="w-48 h-64 object-cover rounded-md shadow-md mb-4"
             />
-
-            {/* Thumbnail selector */}
             <div className="flex gap-2 flex-wrap">
               {book.images.map((img, index) => (
                 <img
@@ -96,12 +94,25 @@ export default function BookOverview() {
             </div>
 
             <div className="mt-6">
-              <p className="font-medium text-gray-800 mb-1">Description:</p>
-              <p className="text-gray-700 leading-relaxed">{book.description}</p>
+            <p className="font-medium text-gray-800 mb-1">Description:</p>
+            <p className="text-gray-700 leading-relaxed">{book.description}</p>
             </div>
+
+            {book.stock > 0 && (
+              <button
+                onClick={handleBorrowBook}
+                className="mt-6 py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700"
+              >
+                Borrow Book
+              </button>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+
+
+

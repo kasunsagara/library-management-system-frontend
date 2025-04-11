@@ -3,8 +3,8 @@ import Header from "../components/Header";
 import Welcome from "../components/welcome";
 import { FaChartBar, FaBook, FaUsers } from "react-icons/fa";
 import LibrarianBooks from "./librarian/librarianBooks";
-import AddBook from "./librarian/addBook";
-import EditBook from "./librarian/editBook";
+import AddBookForm from "./librarian/addBookForm";
+import EditBookForm from "./librarian/editBookForm";
 import LibrarianDashboard from "./librarian/librarianDashboard";
 import LibrarianUsers from "./librarian/librarianUsers";
 import { useEffect, useState } from "react";
@@ -74,8 +74,8 @@ export default function LibrarianHomePage() {
             <Route path="/" element={<Welcome user={user} />} />
             <Route path="/dashboard" element={<LibrarianDashboard />} />
             <Route path="/books" element={<LibrarianBooks />} />
-            <Route path="/books/addBook" element={<AddBook />} />
-            <Route path="/books/editBook" element={<EditBook />} />
+            <Route path="/books/addBook" element={<AddBookForm />} />
+            <Route path="/books/editBook" element={<EditBookForm />} />
             <Route path="/users" element={<LibrarianUsers />} />
             <Route path="/*" element={<h1 className="text-3xl font-semibold text-gray-800">404 - Page Not Found</h1>} />
           </Routes>

@@ -4,6 +4,8 @@ import Welcome from "../components/welcome";
 import { FaChartBar, FaBook } from "react-icons/fa";
 import UserBooks from "./user/userBooks";
 import UserDashboard from "./user/userDashboard";
+import BookOverview from "./user/bookOverview";
+
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -64,6 +66,8 @@ export default function UserHomePage() {
             <Route path="/" element={<Welcome user={user} />} />
             <Route path="/dashboard" element={<UserDashboard />} />
             <Route path="/books" element={<UserBooks />} />
+            <Route path="/bookInfo/:bookId" element={<BookOverview />} />
+            
           </Routes>
         ) : (
           <div className="w-full h-full flex justify-center items-center">

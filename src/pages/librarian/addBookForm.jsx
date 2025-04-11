@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import uploadMediaToSupabase from "../../utils/mediaUpload";
 
-export default function AddBook() {
+export default function AddBookForm() {
   const [bookId, setBookId] = useState("");
   const [bookName, setBookName] = useState("");
   const [authorName, setAuthorName] = useState("");
@@ -58,7 +58,7 @@ export default function AddBook() {
             <label className="text-gray-700 font-medium">Book ID</label>
             <input
               type="text"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               placeholder="Enter Book ID"
               value={bookId}
               onChange={(e) => setBookId(e.target.value)}
@@ -69,7 +69,7 @@ export default function AddBook() {
             <label className="text-gray-700 font-medium">Book Name</label>
             <input
               type="text"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               placeholder="Enter Book Name"
               value={bookName}
               onChange={(e) => setBookName(e.target.value)}
@@ -80,7 +80,7 @@ export default function AddBook() {
             <label className="text-gray-700 font-medium">Author Name</label>
             <input
               type="text"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               placeholder="Enter Author Name"
               value={authorName}
               onChange={(e) => setAuthorName(e.target.value)}
@@ -91,7 +91,7 @@ export default function AddBook() {
             <label className="text-gray-700 font-medium">Published Date</label>
             <input
               type="date"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               value={publishedDate}
               onChange={(e) => setPublishedDate(e.target.value)}
             />
@@ -101,7 +101,7 @@ export default function AddBook() {
             <label className="text-gray-700 font-medium">Image Upload</label>
             <input
               type="file"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               onChange={(e) => {
                 setImageFiles(e.target.files);
               }}
@@ -113,7 +113,7 @@ export default function AddBook() {
             <label className="text-gray-700 font-medium">Stock</label>
             <input
               type="number"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               placeholder="Enter Stock Quantity"
               value={stock}
               onChange={(e) => setStock(e.target.value)}
@@ -123,7 +123,7 @@ export default function AddBook() {
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium">Description</label>
             <textarea
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               placeholder="Enter Book Description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}

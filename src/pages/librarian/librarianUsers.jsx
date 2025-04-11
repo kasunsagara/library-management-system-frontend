@@ -73,26 +73,25 @@ export default function AdminUsers() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-6 relative">
-      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-md p-8">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">Users</h1>
+        <h1 className="text-2xl text-white font-bold mb-4 text-center">Users Records</h1>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-400 rounded-lg">
+          <table className="min-w-full text-sm bg-white border border-gray-400">
             <thead>
-              <tr className="bg-gray-200">
-                <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+              <tr className="bg-gray-200 text-gray-800">
+                <th className="border border-gray-400 px-6 py-4 text-left">
                   Profile Picture
                 </th>
-                <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                <th className="border border-gray-400 px-6 py-4 text-left">
                   Full Name
                 </th>
-                <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                <th className="border border-gray-400 px-6 py-4 text-left">
                   Email
                 </th>
-                <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                <th className="border border-gray-400 px-6 py-4 text-left">
                   User Role
                 </th>
-                <th className="text-center px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                <th className="border border-gray-400 px-6 py-4 text-left">
                   Action
                 </th>
               </tr>
@@ -101,27 +100,27 @@ export default function AdminUsers() {
               {userData.map((user, index) => (
                 <tr
                   key={user._id}
-                  className={`hover:bg-gray-50 ${
+                  className={`hover:bg-gray-100 ${
                     index % 2 === 0 ? "bg-white" : "bg-white"
                   }`}
                 >
-                  <td className="px-6 py-4 border border-gray-400">
+                  <td className="border border-gray-400 px-6 py-4">
                     <img
                       src={user.profilePicture}
                       alt="Profile"
                       className="w-16 h-16 rounded-full object-cover"
                     />
                   </td>
-                  <td className="px-6 py-4 border border-gray-400 text-gray-700">
+                  <td className="border border-gray-400 px-6 py-4">
                     {`${user.firstName} ${user.lastName}`}
                   </td>
-                  <td className="px-6 py-4 border border-gray-400 text-gray-700">
+                  <td className="border border-gray-400 px-6 py-4">
                     {user.email}
                   </td>
-                  <td className="px-6 py-4 border border-gray-400 text-gray-700">
+                  <td className="border border-gray-400 px-6 py-4">
                     {user.role}
                   </td>
-                  <td className="px-6 py-4 border border-gray-400 text-center">
+                  <td className="border border-gray-400 px-6 py-4">
                     <button
                       onClick={() => handleDeleteUser(user.email)}
                       className="text-red-500 hover:text-red-700"
@@ -135,8 +134,6 @@ export default function AdminUsers() {
             </tbody>
           </table>
         </div>
-
-      </div>
     </div>
   );
 }

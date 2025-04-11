@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function UserBorrow() {
+export default function LibrarianBorrow() {
   const [borrows, setBorrows] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -44,7 +44,7 @@ export default function UserBorrow() {
 
   return (
     <div className="overflow-x-auto px-4 py-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-      <h1 className="text-2xl text-white font-bold mb-4 text-center">My Borrow Records</h1>
+      <h1 className="text-2xl text-white font-bold mb-4 text-center">Borrow Records</h1>
       <table className="min-w-full text-sm bg-white border border-gray-400">
         <thead>
           <tr className="bg-gray-200 text-gray-800">

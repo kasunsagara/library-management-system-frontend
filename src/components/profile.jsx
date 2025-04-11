@@ -40,9 +40,9 @@ export default function Profile() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center px-4">
       {isLoading ? (
-        <div className="relative">
-          <div className="absolute inset-0 rounded-full h-32 w-32 opacity-30 blur-xl bg-gradient-to-tr from-blue-400 via-purple-500 to-pink-500"></div>
-          <div className="animate-spin rounded-full h-32 w-32 border-8 border-white border-t-accent shadow-2xl"></div>
+        <div className="w-full h-full flex justify-center items-center">
+          {/* Loading Spinner */}
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
         </div>
       ) : !isLoggedIn ? (
         <div className="bg-white/30 backdrop-blur-xl p-10 rounded-xl shadow-2xl text-center max-w-md w-full border border-white/20">

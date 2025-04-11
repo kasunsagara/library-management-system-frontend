@@ -1,10 +1,11 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Welcome from "../components/welcome";
-import { FaChartBar, FaBook } from "react-icons/fa";
+import { FaChartBar, FaBook, FaRegClipboard } from "react-icons/fa";
 import UserBooks from "./user/userBooks";
 import UserDashboard from "./user/userDashboard";
 import BookOverview from "./user/bookOverview";
+import UserBorrow from "./user/userBorrow";
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -56,6 +57,13 @@ export default function UserHomePage() {
         >
           <FaBook className="mr-3 text-xl" /> Books
         </Link>
+
+        <Link
+          className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
+          to="/user/borrows"
+        >
+          <FaRegClipboard className="mr-3 text-xl" /> My Borrows
+        </Link>
       </div>
 
       {/* Main Content */}
@@ -67,6 +75,7 @@ export default function UserHomePage() {
             <Route path="/dashboard" element={<UserDashboard />} />
             <Route path="/books" element={<UserBooks />} />
             <Route path="/bookInfo/:bookId" element={<BookOverview />} />
+            <Route path="/borrows" element={<UserBorrow />} />
             
           </Routes>
         ) : (

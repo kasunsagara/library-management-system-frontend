@@ -1,12 +1,13 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Welcome from "../components/welcome";
-import { FaChartBar, FaBook, FaUsers } from "react-icons/fa";
+import { FaChartBar, FaBook, FaUsers, FaRegClipboard } from "react-icons/fa";
 import LibrarianBooks from "./librarian/librarianBooks";
 import AddBookForm from "./librarian/addBookForm";
 import EditBookForm from "./librarian/editBookForm";
 import LibrarianDashboard from "./librarian/librarianDashboard";
 import LibrarianUsers from "./librarian/librarianUsers";
+import LibrarianBorrow from "./librarian/librarianBorrow";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -59,11 +60,18 @@ export default function LibrarianHomePage() {
         </Link>
 
         <Link
-          className="flex flex-row items-center text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
+          className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
           to="/librarian/users"
         >
           <FaUsers className="mr-3 text-xl" /> Users
         </Link>
+
+        <Link
+          className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
+          to="/librarian/borrows"
+        >
+          <FaRegClipboard className="mr-3 text-xl" /> Borrows
+        </Link>        
       </div>
 
       {/* Main Content */}
@@ -77,6 +85,7 @@ export default function LibrarianHomePage() {
             <Route path="/books/addBook" element={<AddBookForm />} />
             <Route path="/books/editBook" element={<EditBookForm />} />
             <Route path="/users" element={<LibrarianUsers />} />
+            <Route path="/borrows" element={<LibrarianBorrow />} />
             <Route path="/*" element={<h1 className="text-3xl font-semibold text-gray-800">404 - Page Not Found</h1>} />
           </Routes>
         ) : (

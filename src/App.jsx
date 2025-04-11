@@ -9,7 +9,6 @@ import UserHomePage from './pages/userHomePage'
 import BookOverview from './pages/user/bookOverview'
 import Profile from './components/profile'
 import BorrowBook from './pages/user/borrowBook'
-import UserBorrow from './pages/user/userBorrow'
 import { Toaster } from 'react-hot-toast'
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
         <Route path="/bookInfo/:bookId" element={<BookOverview />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/borrowBook" element={<BorrowBook />} />
-        <Route path="/userBorrow" element={<UserBorrow />} />
     </Routes>
     </BrowserRouter>
     </div>

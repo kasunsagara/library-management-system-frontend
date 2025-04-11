@@ -86,7 +86,7 @@ export default function BorrowBookForm() {
       )
       .then(() => {
         toast.success("Books borrowed successfully!");
-        navigate("/userBorrow");
+        navigate("/user/borrows");
       })
       .catch((err) => {
         toast.error("Failed to borrow books. Please try again.");
@@ -95,7 +95,7 @@ export default function BorrowBookForm() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center p-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
       <div className="w-full max-w-2xl bg-white rounded shadow p-6">
         <h2 className="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
           Borrower Information
@@ -107,8 +107,8 @@ export default function BorrowBookForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {books.map((book) => (
                 <div
-                  key={book.bookId}
-                  className="flex items-center p-3 border rounded-md bg-gray-50 shadow-sm"
+                  key={book._id}
+                  className="flex items-center p-3 border border-gray-300 rounded-md bg-white shadow-sm"
                 >
                   <img
                     src={book.images?.[0]}

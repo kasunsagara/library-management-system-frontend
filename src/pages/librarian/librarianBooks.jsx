@@ -37,12 +37,11 @@ export default function AdminBooks() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-6 relative">
-      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-md p-8">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">Books</h1>
+      <h1 className="text-2xl text-white font-bold mb-4 text-center">Books Records</h1> 
 
         <Link
           to={"/librarian/books/addBook"}
-          className="absolute top-0 right-0 mt-10 mr-10 flex items-center justify-center w-14 h-14 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-700 transition-all"
+          className="absolute top-0 right-0 mr-6 flex items-center justify-center w-14 h-14 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-700 transition-all"
         >
           <FaPlus />
         </Link>
@@ -51,28 +50,28 @@ export default function AdminBooks() {
           <p className="text-gray-600 mt-4">No books found.</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-400 rounded-lg">
+            <table className="min-w-full text-sm bg-white border border-gray-400">
               <thead>
-                <tr className="bg-gray-200">
-                  <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                <tr className="bg-gray-200 text-gray-800">
+                  <th className="border border-gray-400 px-6 py-4 text-left">
                     Book ID
                   </th>
-                  <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                  <th className="border border-gray-400 px-6 py-4 text-left">
                     Title
                   </th>
-                  <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                  <th className="border border-gray-400 px-6 py-4 text-left">
                     Author
                   </th>
-                  <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                  <th className="border border-gray-400 px-6 py-4 text-left">
                     Published Date
                   </th>
-                  <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                  <th className="border border-gray-400 px-6 py-4 text-left">
                     Stock
                   </th>
-                  <th className="text-left px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                  <th className="border border-gray-400 px-6 py-4 text-left">
                     Description
                   </th>
-                  <th className="text-center px-6 py-4 border border-gray-400 text-gray-800 font-medium">
+                  <th className="border border-gray-400 px-6 py-4 text-left">
                     Action
                   </th>
                 </tr>
@@ -81,29 +80,29 @@ export default function AdminBooks() {
                 {books.map((book, index) => (
                   <tr
                     key={book.bookId}
-                    className={`hover:bg-gray-50 ${
-                      index % 2 === 0 ? "bg-white" : "bg-gray-100"
+                    className={`hover:bg-gray-100 ${
+                      index % 2 === 0 ? "bg-white" : "bg-white"
                     }`}
                   >
-                    <td className="px-6 py-4 border border-gray-400 text-gray-700">
+                    <td className="border border-gray-400 px-6 py-4">
                       {book.bookId}
                     </td>
-                    <td className="px-6 py-4 border border-gray-400 text-gray-700">
+                    <td className="border border-gray-400 px-6 py-4">
                       {book.bookName}
                     </td>
-                    <td className="px-6 py-4 border border-gray-400 text-gray-700">
+                    <td className="border border-gray-400 px-6 py-4">
                       {book.authorName}
                     </td>
-                    <td className="px-6 py-4 border border-gray-400 text-gray-700">
+                    <td className="border border-gray-400 px-6 py-4">
                       {book.publishedDate}
                     </td>
-                    <td className="px-6 py-4 border border-gray-400 text-gray-700">
+                    <td className="border border-gray-400 px-6 py-4">
                       {book.stock}
                     </td>
-                    <td className="px-6 py-4 border border-gray-400 text-gray-700 truncate max-w-xs">
+                    <td className="border border-gray-400 px-6 py-4 truncate max-w-xs">
                       {book.description}
                     </td>
-                    <td className="px-6 py-4 border border-gray-400 text-gray-700 text-center">
+                    <td className="border border-gray-400 px-6 py-4 text-center">
                       <button
                         className="text-red-500 hover:text-red-700 mr-2"
                         title="Delete"
@@ -152,7 +151,6 @@ export default function AdminBooks() {
             </table>
           </div>
         )}
-      </div>
     </div>
   );
 }

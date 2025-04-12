@@ -59,7 +59,7 @@ export default function Profile() {
               <img
                 src={userData.profilePicture}
                 alt="Profile"
-                className="w-36 h-36 rounded-full shadow-lg hover:scale-[1.04] transition-transform duration-300 "
+                className="w-36 h-36 rounded-full shadow-lg"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-400 via-purple-400 to-blue-400 opacity-20 blur-lg z-[-1]"></div>
             </div>

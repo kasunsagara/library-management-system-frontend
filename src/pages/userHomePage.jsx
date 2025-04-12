@@ -6,6 +6,7 @@ import UserBooks from "./user/userBooks";
 import UserDashboard from "./user/userDashboard";
 import BookOverview from "./user/bookOverview";
 import UserBorrow from "./user/userBorrow";
+import UserReturn from "./user/userReturn";
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -64,6 +65,13 @@ export default function UserHomePage() {
         >
           <FaRegClipboard className="mr-3 text-xl" /> My Borrows
         </Link>
+
+        <Link
+          className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
+          to="/user/returns"
+        >
+          <FaRegClipboard className="mr-3 text-xl" /> My Returns
+        </Link>
       </div>
 
       {/* Main Content */}
@@ -76,6 +84,7 @@ export default function UserHomePage() {
             <Route path="/books" element={<UserBooks />} />
             <Route path="/bookInfo/:bookId" element={<BookOverview />} />
             <Route path="/borrows" element={<UserBorrow />} />
+            <Route path="/returns" element={<UserReturn />} />
             
           </Routes>
         ) : (
@@ -88,3 +97,26 @@ export default function UserHomePage() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -79,7 +79,10 @@ export default function LibrarianBorrow() {
                         alt={book.name}
                         className="w-8 h-12 object-cover rounded shadow-sm"
                       />
+                      <div className="flex flex-col">
                       <span>{book.name}</span>
+                      <span>{book.id}</span>
+                      </div>
                     </li>
                   ))}
                 </ul>

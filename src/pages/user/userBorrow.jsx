@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function UserBorrow() {
   const [borrows, setBorrows] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // Get token from localStorage (or wherever you store JWT)
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -27,11 +27,15 @@ export default function UserBorrow() {
     fetchBorrows();
   }, [token]);
 
+  const handleReturnBook = (borrow) => {
+    navigate("/returnBook", { state: { borrow } });
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
         <div className="w-full h-full flex justify-center items-center">
-          {/* Loading Spinner */}
+          {/* Loading Spinner */}          
           <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-8 border-blue-800"></div>
         </div>
       </div>
@@ -55,6 +59,7 @@ export default function UserBorrow() {
             <th className="border border-gray-400 px-6 py-4 text-left">Address</th>
             <th className="border border-gray-400 px-6 py-4 text-left">Phone</th>
             <th className="border border-gray-400 px-6 py-4 text-left">Book</th>
+            <th className="border border-gray-400 px-6 py-4 text-left">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -79,10 +84,21 @@ export default function UserBorrow() {
                         alt={book.name}
                         className="w-8 h-12 object-cover rounded shadow-sm"
                       />
-                      <span>{book.name}</span>
+                      <div className="flex flex-col">
+                        <span>{book.name}</span>
+                        <span>{book.id}</span>
+                      </div>
                     </li>
                   ))}
                 </ul>
+              </td>
+              <td className="border border-gray-400 px-6 py-4">
+                <button 
+                  onClick={() => handleReturnBook(borrow)}
+                  className="py-1 px-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700"
+                >
+                  Return Book
+                </button>
               </td>
             </tr>
           ))}
@@ -90,6 +106,4 @@ export default function UserBorrow() {
       </table>
     </div>
   );
-};
-
-
+}

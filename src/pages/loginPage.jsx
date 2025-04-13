@@ -10,6 +10,13 @@ export default function LoginPage() {
 
   const passwordRef = useRef(null);
 
+  const handleKeyDown = (event, nextInputRef) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      nextInputRef?.current?.focus();
+    }
+  };  
+
   function login() {
     axios
       .post(import.meta.env.VITE_BACKEND_URL + '/api/users/login', {
@@ -51,12 +58,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  e.preventDefault();
-                  passwordRef.current?.focus();
-                }
-              }}
+              onKeyDown={(e) => { handleKeyDown(e, passwordRef); }}
               className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
             />

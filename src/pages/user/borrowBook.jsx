@@ -17,6 +17,13 @@ export default function BorrowBookForm() {
   const addressRef = useRef(null);
   const phoneRef = useRef(null);
 
+  const handleKeyDown = (event, nextInputRef) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      nextInputRef?.current?.focus();
+    }
+  };  
+
   useEffect(() => {
     if (cart.length === 0) {
       toast.error("No items received.");
@@ -146,12 +153,7 @@ export default function BorrowBookForm() {
             className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
-                addressRef.current?.focus();
-              }
-            }}
+            onKeyDown={(e) => { handleKeyDown(e, addressRef); }}
           />
         </div>
 
@@ -165,12 +167,7 @@ export default function BorrowBookForm() {
             className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
-                phoneRef.current?.focus();
-              }
-            }}
+            onKeyDown={(e) => { handleKeyDown(e, phoneRef); }}
           />
         </div>
 
@@ -185,12 +182,6 @@ export default function BorrowBookForm() {
             className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
-                createBorrow();
-              }
-            }}
           />
         </div>
 

@@ -55,7 +55,7 @@ export default function EditBookForm() {
   }
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center">
-      <div className="bg-white w-full max-w-lg p-10 rounded-lg shadow-lg">
+      <div className="bg-white w-full max-w-lg p-8 m-8 rounded-lg shadow-lg">
         <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
           Edit Book
         </h1>

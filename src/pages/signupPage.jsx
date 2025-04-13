@@ -17,6 +17,7 @@ export default function SignupPage() {
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
   const passwordRef = useRef(null);
+  const profilePictureRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -30,6 +31,7 @@ export default function SignupPage() {
 
   const handleKeyDown = (event, nextInputRef) => {
     if (event.key === 'Enter') {
+      event.preventDefault();
       nextInputRef?.current?.focus();
     }
   };
@@ -135,6 +137,7 @@ export default function SignupPage() {
               type="password"
               value={formData.password}
               onChange={handleChange}
+              onKeyDown={(e) => handleKeyDown(e, profilePictureRef)}
               className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
               ref={passwordRef}
@@ -154,7 +157,9 @@ export default function SignupPage() {
                   setProfileImageFile(e.target.files[0]);
                 }
               }}
+              onKeyDown={(e) => handleKeyDown(e, null)} // Prevent focus move
               className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              ref={profilePictureRef}
             />
           </div>
           <button

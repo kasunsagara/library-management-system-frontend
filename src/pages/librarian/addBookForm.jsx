@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import uploadMediaToSupabase from "../../utils/mediaUpload";
@@ -12,7 +12,22 @@ export default function AddBookForm() {
   const [imageFiles, setImageFiles] = useState([]);
   const [stock, setStock] = useState("");
   const [description, setDescription] = useState("");
+
+  const bookNameRef = useRef(null);
+  const authorRef = useRef(null);
+  const dateRef = useRef(null);
+  const imageRef = useRef(null);
+  const stockRef = useRef(null);
+  const descriptionRef = useRef(null);
+
   const navigate = useNavigate();
+
+  const handleKeyDown = (e, nextRef) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      nextRef?.current?.focus();
+    }
+  };
 
   async function handleSubmit() {
     const promisesArray = [];
@@ -24,13 +39,13 @@ export default function AddBookForm() {
     const imgUrls = await Promise.all(promisesArray);
 
     const book = {
-      bookId: bookId,
-      bookName: bookName,
-      authorName: authorName,
-      publishedDate: publishedDate,
+      bookId,
+      bookName,
+      authorName,
+      publishedDate,
       images: imgUrls,
-      stock: stock,
-      description: description,
+      stock,
+      description,
     };
 
     const token = localStorage.getItem("token");
@@ -49,19 +64,17 @@ export default function AddBookForm() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center">
-      <div className="bg-white w-full max-w-lg p-10 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 text-center mb-8">
-          Add Book 
-        </h1>
+      <div className="bg-white w-full max-w-lg p-8 m-8 rounded-lg shadow-lg">
+        <h1 className="text-3xl font-bold text-gray-800 text-center mb-8">Add Book</h1>
         <div className="space-y-6">
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium">Book ID</label>
             <input
               type="text"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              placeholder="Enter Book ID"
               value={bookId}
               onChange={(e) => setBookId(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, bookNameRef)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 
@@ -69,10 +82,11 @@ export default function AddBookForm() {
             <label className="text-gray-700 font-medium">Book Name</label>
             <input
               type="text"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              placeholder="Enter Book Name"
               value={bookName}
               onChange={(e) => setBookName(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, authorRef)}
+              ref={bookNameRef}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 
@@ -80,10 +94,11 @@ export default function AddBookForm() {
             <label className="text-gray-700 font-medium">Author Name</label>
             <input
               type="text"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              placeholder="Enter Author Name"
               value={authorName}
               onChange={(e) => setAuthorName(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, dateRef)}
+              ref={authorRef}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 
@@ -91,9 +106,11 @@ export default function AddBookForm() {
             <label className="text-gray-700 font-medium">Published Date</label>
             <input
               type="date"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               value={publishedDate}
               onChange={(e) => setPublishedDate(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, imageRef)}
+              ref={dateRef}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 
@@ -101,11 +118,11 @@ export default function AddBookForm() {
             <label className="text-gray-700 font-medium">Image Upload</label>
             <input
               type="file"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              onChange={(e) => {
-                setImageFiles(e.target.files);
-              }}
+              onChange={(e) => setImageFiles(e.target.files)}
+              onKeyDown={(e) => handleKeyDown(e, stockRef)}
+              ref={imageRef}
               multiple
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 
@@ -113,20 +130,21 @@ export default function AddBookForm() {
             <label className="text-gray-700 font-medium">Stock</label>
             <input
               type="number"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              placeholder="Enter Stock Quantity"
               value={stock}
               onChange={(e) => setStock(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, descriptionRef)}
+              ref={stockRef}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium">Description</label>
             <textarea
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              placeholder="Enter Book Description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              ref={descriptionRef}
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 

@@ -103,12 +103,9 @@ export default function LibrarianBooks() {
                       {book.description}
                     </td>
                     <td className="border border-gray-400 px-6 py-4 text-center">
-                      <button
+                    <button
                         className="text-white px-2.5 py-0.5 rounded bg-red-500 hover:bg-red-700 transition duration-200 mr-2"
                         onClick={() => {
-                          const confirmDelete = window.confirm("Are you sure you want to delete this book?");
-                          if (!confirmDelete) return;
-
                           const token = localStorage.getItem("token");
                           axios
                             .delete(

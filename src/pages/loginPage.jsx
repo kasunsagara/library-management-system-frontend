@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -8,11 +8,13 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  const passwordRef = useRef(null);
+
   function login() {
     axios
       .post(import.meta.env.VITE_BACKEND_URL + '/api/users/login', {
-        email: email,
-        password: password,
+        email,
+        password,
       })
       .then((res) => {
         if (res.data.user == null) {
@@ -20,7 +22,6 @@ export default function LoginPage() {
           return;
         }
         toast.success('Login successful!');
-
         localStorage.setItem('token', res.data.token);
         if (res.data.user.role === 'librarian') {
           navigate('/librarian');
@@ -39,7 +40,7 @@ export default function LoginPage() {
       <div className="w-[450px] p-8 bg-white shadow-lg rounded-lg">
         <h1 className="text-2xl font-bold text-blue-700 text-center mb-6">Login Now</h1>
 
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-blue-700 mb-1">
               Email
@@ -50,6 +51,12 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  passwordRef.current?.focus();
+                }
+              }}
               className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
             />
@@ -65,6 +72,13 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              ref={passwordRef}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  login();
+                }
+              }}
               className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
             />

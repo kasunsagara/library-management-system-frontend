@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 export default function BorrowBookForm() {
@@ -12,6 +12,10 @@ export default function BorrowBookForm() {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [books, setBooks] = useState([]);
+
+  const nameRef = useRef(null);
+  const addressRef = useRef(null);
+  const phoneRef = useRef(null);
 
   useEffect(() => {
     if (cart.length === 0) {
@@ -103,7 +107,9 @@ export default function BorrowBookForm() {
 
         {books.length > 0 && (
           <div className="mb-6">
-            <h3 className="text-md font-semibold text-gray-700 mb-2">Books to Borrow</h3>
+            <h3 className="text-md font-semibold text-gray-700 mb-2">
+              Books to Borrow
+            </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {books.map((book) => (
                 <div
@@ -116,8 +122,12 @@ export default function BorrowBookForm() {
                     className="w-20 h-20 object-cover rounded border mr-4"
                   />
                   <div>
-                    <p className="text-gray-700 text-sm">Book Name: {book.bookName}</p>
-                    <p className="text-gray-700 text-sm">Book ID: {book.bookId}</p>
+                    <p className="text-gray-700 text-sm">
+                      Book Name: {book.bookName}
+                    </p>
+                    <p className="text-gray-700 text-sm">
+                      Book ID: {book.bookId}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -131,10 +141,17 @@ export default function BorrowBookForm() {
           </label>
           <input
             id="name"
+            ref={nameRef}
             type="text"
             className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                addressRef.current?.focus();
+              }
+            }}
           />
         </div>
 
@@ -144,9 +161,16 @@ export default function BorrowBookForm() {
           </label>
           <textarea
             id="address"
+            ref={addressRef}
             className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                phoneRef.current?.focus();
+              }
+            }}
           />
         </div>
 
@@ -156,10 +180,17 @@ export default function BorrowBookForm() {
           </label>
           <input
             id="phone"
+            ref={phoneRef}
             type="text"
             className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                createBorrow();
+              }
+            }}
           />
         </div>
 

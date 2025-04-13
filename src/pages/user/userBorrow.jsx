@@ -43,7 +43,7 @@ export default function UserBorrow() {
   }
 
   if (borrows.length === 0) {
-    return <p className="text-center py-4 text-gray-500">No borrow records found.</p>;
+    return <p className="text-center py-4 text-gray-100">No borrow records found.</p>;
   }
 
   return (

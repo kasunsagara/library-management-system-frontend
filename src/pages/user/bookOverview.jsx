@@ -43,7 +43,7 @@ export default function BookOverview() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 py-10 flex items-center justify-center">
       <div className="max-w-5xl mx-auto bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">Book Overview</h2>
+        <h2 className="text-2xl text-center font-semibold text-gray-800 mb-6 border-b pb-2">Book Overview</h2>
 
         <div className="flex flex-col md:flex-row gap-8">
           <div>

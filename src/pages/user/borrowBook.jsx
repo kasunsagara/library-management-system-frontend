@@ -108,7 +108,7 @@ export default function BorrowBookForm() {
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
       <div className="w-full max-w-2xl bg-white rounded shadow p-6">
-        <h2 className="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
+        <h2 className="text-xl text-center font-bold text-gray-800 mb-4 pb-2">
           Borrower Information
         </h2>
 

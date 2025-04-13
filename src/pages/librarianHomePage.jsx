@@ -1,13 +1,14 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Welcome from "../components/welcome";
-import { FaChartBar, FaBook, FaUsers, FaRegClipboard } from "react-icons/fa";
+import { FaChartBar, FaBook, FaUsers, FaHandHolding, FaUndo } from "react-icons/fa";
 import LibrarianBooks from "./librarian/librarianBooks";
 import AddBookForm from "./librarian/addBookForm";
 import EditBookForm from "./librarian/editBookForm";
 import LibrarianDashboard from "./librarian/librarianDashboard";
 import LibrarianUsers from "./librarian/librarianUsers";
 import LibrarianBorrow from "./librarian/librarianBorrow";
+import LibrarianReturn from "./librarian/librarianReturn";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -70,8 +71,15 @@ export default function LibrarianHomePage() {
           className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
           to="/librarian/borrows"
         >
-          <FaRegClipboard className="mr-3 text-xl" /> Borrows
-        </Link>        
+          <FaHandHolding className="mr-3 text-xl" /> Borrows
+        </Link>
+
+        <Link
+          className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
+          to="/librarian/returns"
+        >
+          <FaUndo className="mr-3 text-xl" /> Returns
+        </Link>      
       </div>
 
       {/* Main Content */}
@@ -86,7 +94,7 @@ export default function LibrarianHomePage() {
             <Route path="/books/editBook" element={<EditBookForm />} />
             <Route path="/users" element={<LibrarianUsers />} />
             <Route path="/borrows" element={<LibrarianBorrow />} />
-            <Route path="/*" element={<h1 className="text-3xl font-semibold text-gray-800">404 - Page Not Found</h1>} />
+            <Route path="/returns" element={<LibrarianReturn />} />
           </Routes>
         ) : (
           <div className="w-full h-full flex justify-center items-center">

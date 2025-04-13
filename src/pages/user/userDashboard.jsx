@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { FaBook, FaRegClipboard } from "react-icons/fa";
+import { FaBook, FaHandHolding, FaUndo } from "react-icons/fa";
 
-export default function AdminDashboard() {
+export default function UserDashboard() {
   const [totalBooks, setTotalBooks] = useState(0);
   const [borrowedBooks, setBorrowedBooks] = useState(0);
+  const [returnedBooks, setReturnedBooks] = useState(0);
 
   const [loadingBooks, setLoadingBooks] = useState(true);
   const [loadingBorrowed, setLoadingBorrowed] = useState(true);
+  const [loadingReturned, setLoadingReturned] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -41,9 +43,23 @@ export default function AdminDashboard() {
         toast.error("Failed to fetch borrowed books. Please try again.");
         setLoadingBorrowed(false);
       });
+
+    // Fetch all returned books
+    axios
+      .get(import.meta.env.VITE_BACKEND_URL + "/api/returns", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        setReturnedBooks(res.data.length);
+        setLoadingReturned(false);
+      })
+      .catch(() => {
+        toast.error("Failed to fetch returned books. Please try again.");
+        setLoadingReturned(false);
+      });
   }, []);
 
-  if (loadingBooks || loadingBorrowed) {
+  if (loadingBooks || loadingBorrowed || loadingReturned) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
         <div className="w-full h-full flex justify-center items-center">
@@ -71,11 +87,22 @@ export default function AdminDashboard() {
         {/* Borrowed Books Card */}
         <div className="w-full bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md text-blue-600 p-6 flex items-center max-w-2xl hover:scale-[1.02] transition-transform duration-300">
           <div className="text-blue-600 text-5xl bg-blue-300 p-4 rounded-full">
-            <FaRegClipboard />
+            <FaHandHolding />
           </div>
           <div className="ml-6">
             <h2 className="text-2xl font-bold">My Total Borrow Books</h2>
             <p className="text-4xl font-bold mt-2">{borrowedBooks}</p>
+          </div>
+        </div>
+
+        {/* Returned Books Card */}
+        <div className="w-full bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md text-blue-600 p-6 flex items-center max-w-2xl hover:scale-[1.02] transition-transform duration-300">
+          <div className="text-blue-600 text-5xl bg-blue-300 p-4 rounded-full">
+            <FaUndo />
+          </div>
+          <div className="ml-6">
+            <h2 className="text-2xl font-bold">My Total Returned Books</h2>
+            <p className="text-4xl font-bold mt-2">{returnedBooks}</p>
           </div>
         </div>
       </div>

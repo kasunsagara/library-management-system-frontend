@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function UserReturn() {
+export default function LibrarianReturn() {
   const [borrows, setBorrows] = useState([]);
   const [returns, setReturns] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -54,7 +54,7 @@ export default function UserReturn() {
 
   return (
     <div className="overflow-x-auto px-4 py-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 min-h-screen">
-      <h1 className="text-2xl text-white font-bold mb-4 text-center">My Return Records</h1>
+      <h1 className="text-2xl text-white font-bold mb-4 text-center">Return Records</h1>
       <table className="min-w-full text-sm bg-white border border-gray-400">
         <thead>
           <tr className="bg-gray-200 text-gray-800">

@@ -92,12 +92,12 @@ export default function UserBorrow() {
                   ))}
                 </ul>
               </td>
-              <td className="border border-gray-400 px-6 py-4">
+              <td className="border border-gray-400 px-6 py-4 text-center">
                 <button 
                   onClick={() => handleReturnBook(borrow)}
-                  className="py-1 px-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700"
+                  className="text-white px-3 py-1 rounded bg-blue-500 hover:bg-blue-700 transition duration-200"
                 >
-                  Return Book
+                  Return
                 </button>
               </td>
             </tr>

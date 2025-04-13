@@ -1,7 +1,7 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Welcome from "../components/welcome";
-import { FaChartBar, FaBook, FaRegClipboard } from "react-icons/fa";
+import { FaChartBar, FaBook, FaHandHolding, FaUndo } from "react-icons/fa";
 import UserBooks from "./user/userBooks";
 import UserDashboard from "./user/userDashboard";
 import BookOverview from "./user/bookOverview";
@@ -63,14 +63,14 @@ export default function UserHomePage() {
           className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
           to="/user/borrows"
         >
-          <FaRegClipboard className="mr-3 text-xl" /> My Borrows
+          <FaHandHolding className="mr-3 text-xl" /> My Borrows
         </Link>
 
         <Link
           className="flex flex-row items-center mb-6 text-[17px] text-white hover:bg-blue-400 hover:rounded-lg py-2 px-4 transition-all duration-300"
           to="/user/returns"
         >
-          <FaRegClipboard className="mr-3 text-xl" /> My Returns
+          <FaUndo className="mr-3 text-xl" /> My Returns
         </Link>
       </div>
 
@@ -84,8 +84,7 @@ export default function UserHomePage() {
             <Route path="/books" element={<UserBooks />} />
             <Route path="/bookInfo/:bookId" element={<BookOverview />} />
             <Route path="/borrows" element={<UserBorrow />} />
-            <Route path="/returns" element={<UserReturn />} />
-            
+            <Route path="/returns" element={<UserReturn />} />      
           </Routes>
         ) : (
           <div className="w-full h-full flex justify-center items-center">

@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { FaPlus, FaTrash, FaPencilAlt } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function AdminBooks() {
+export default function LibrarianBooks() {
   const [books, setBooks] = useState([]);
   const [booksLoaded, setBooksLoaded] = useState(false);
   const navigate = useNavigate();
@@ -104,8 +104,7 @@ export default function AdminBooks() {
                     </td>
                     <td className="border border-gray-400 px-6 py-4 text-center">
                       <button
-                        className="text-red-500 hover:text-red-700 mr-2"
-                        title="Delete"
+                        className="text-white px-2.5 py-0.5 rounded bg-red-500 hover:bg-red-700 transition duration-200 mr-2"
                         onClick={() => {
                           const confirmDelete = window.confirm("Are you sure you want to delete this book?");
                           if (!confirmDelete) return;
@@ -131,18 +130,17 @@ export default function AdminBooks() {
                             });
                         }}
                       >
-                        <FaTrash />
+                        Delete
                       </button>
                       <button
-                        className="text-blue-500 hover:text-blue-700"
-                        title="Edit"
+                        className="text-white px-2.5 py-0.5 rounded bg-blue-500 hover:bg-blue-700 transition duration-200"
                         onClick={() => {
                           navigate("/librarian/books/editBook", {
                             state: { book: book },
                           });
                         }}
                       >
-                        <FaPencilAlt />
+                        Edit
                       </button>
                     </td>
                   </tr>

@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { FaTrash } from "react-icons/fa";
 
-export default function AdminUsers() {
+export default function LibrarianUsers() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -120,13 +119,12 @@ export default function AdminUsers() {
                   <td className="border border-gray-400 px-6 py-4">
                     {user.role}
                   </td>
-                  <td className="border border-gray-400 px-6 py-4">
+                  <td className="border border-gray-400 px-6 py-4 text-center">
                     <button
                       onClick={() => handleDeleteUser(user.email)}
-                      className="text-red-500 hover:text-red-700"
-                      title="Delete"
+                      className="text-white px-2.5 py-0.5 rounded bg-red-500 hover:bg-red-700 transition duration-200"
                     >
-                      <FaTrash />
+                      Delete
                     </button>
                   </td>
                 </tr>

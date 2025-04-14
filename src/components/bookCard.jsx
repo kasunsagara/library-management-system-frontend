@@ -4,7 +4,7 @@ export default function BookCard(props) {
   const { book } = props;
 
   return (
-    <div className="w-[700px] bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md p-8 m-4 flex items-start hover:scale-[1.02] transition-transform duration-300">
+    <div className="w-[700px] bg-white rounded-lg shadow-md p-8 m-4 flex items-start hover:scale-[1.02] transition-transform duration-300">
       {/* Book Cover */}
       <img
         src={book.images[0]}

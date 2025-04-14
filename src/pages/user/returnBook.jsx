@@ -47,7 +47,7 @@ export default function ReturnBook() {
 
   return (
     <div className="p-6 min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center">
-      <div className="max-w-3xl w-full bg-white bg-opacity-80 backdrop-blur-md rounded-xl shadow-lg p-6 space-y-6">
+      <div className="max-w-3xl w-full bg-white rounded-xl shadow-lg p-6 space-y-6">
         <h2 className="text-3xl font-bold text-center text-gray-800">Return Book</h2>
         
         <div className="space-y-2">
@@ -62,11 +62,11 @@ export default function ReturnBook() {
           </p>
         </div>
 
-        <div className="border-t pt-4">
+        <div>
           <h3 className="text-lg font-semibold text-gray-800 mb-2">Borrowed Books</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {selectedBorrow.borrowedBooks.map((book, i) => (
-              <div key={i} className="flex items-center gap-4 border border-gray-400 rounded-md p-3 shadow-sm">
+              <div key={i} className="flex items-center gap-4 border border-gray-300 rounded-md p-3 shadow-sm">
                 <img src={book.image} alt={book.name} className="w-14 h-20 object-cover rounded border" />
                 <div>
                   <p className="text-base text-gray-800">{book.name}</p>

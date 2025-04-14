@@ -74,7 +74,7 @@ export default function UserDashboard() {
       <h1 className="text-2xl text-white font-bold mb-4 text-center">Dashboard</h1>
       <div className="grid grid-cols-1 gap-6 justify-items-center">
         {/* Total Books Card */}
-        <div className="w-full bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md text-blue-600 p-6 flex items-center max-w-2xl hover:scale-[1.02] transition-transform duration-300">
+        <div className="w-full bg-white rounded-lg shadow-md text-blue-600 p-6 flex items-center max-w-2xl hover:scale-[1.02] transition-transform duration-300">
           <div className="text-blue-600 text-5xl bg-blue-300 p-4 rounded-full">
             <FaBook />
           </div>
@@ -85,7 +85,7 @@ export default function UserDashboard() {
         </div>
 
         {/* Borrowed Books Card */}
-        <div className="w-full bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md text-blue-600 p-6 flex items-center max-w-2xl hover:scale-[1.02] transition-transform duration-300">
+        <div className="w-full bg-white rounded-lg shadow-md text-blue-600 p-6 flex items-center max-w-2xl hover:scale-[1.02] transition-transform duration-300">
           <div className="text-blue-600 text-5xl bg-blue-300 p-4 rounded-full">
             <FaHandHolding />
           </div>
@@ -96,7 +96,7 @@ export default function UserDashboard() {
         </div>
 
         {/* Returned Books Card */}
-        <div className="w-full bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md text-blue-600 p-6 flex items-center max-w-2xl hover:scale-[1.02] transition-transform duration-300">
+        <div className="w-full bg-white rounded-lg shadow-md text-blue-600 p-6 flex items-center max-w-2xl hover:scale-[1.02] transition-transform duration-300">
           <div className="text-blue-600 text-5xl bg-blue-300 p-4 rounded-full">
             <FaUndo />
           </div>

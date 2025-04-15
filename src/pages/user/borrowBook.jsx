@@ -126,13 +126,13 @@ export default function BorrowBookForm() {
                   <img
                     src={book.images?.[0]}
                     alt={book.bookName}
-                    className="w-20 h-20 object-cover rounded border mr-4"
+                    className="w-14 h-20 object-cover rounded border mr-4"
                   />
                   <div>
-                    <p className="text-gray-700 text-sm">
+                    <p className="text-gray-800 text-sm">
                       Book Name: {book.bookName}
                     </p>
-                    <p className="text-gray-700 text-sm">
+                    <p className="text-gray-800 text-sm">
                       Book ID: {book.bookId}
                     </p>
                   </div>

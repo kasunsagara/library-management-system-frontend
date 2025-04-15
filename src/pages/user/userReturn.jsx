@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function UserReturn() {
   const [borrows, setBorrows] = useState([]);
   const [returns, setReturns] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
 
@@ -36,6 +38,10 @@ export default function UserReturn() {
     return returns.find((r) => r.borrowId === borrowId);
   };
 
+  const handlePayFine = () => {
+    navigate("/fine",
+    )}; 
+
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
@@ -66,6 +72,7 @@ export default function UserReturn() {
             <th className="border border-gray-400 px-6 py-4 text-left">Fine</th>
             <th className="border border-gray-400 px-6 py-4 text-left">Status</th>
             <th className="border border-gray-400 px-6 py-4 text-left">Books</th>
+            <th className="border border-gray-400 px-6 py-4 text-left">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -116,6 +123,30 @@ export default function UserReturn() {
                       </li>
                     ))}
                   </ul>
+                </td>
+                <td className="border border-gray-400 px-6 py-4 text-center">
+                  {!isReturned ? (
+                    <button
+                      disabled
+                      className="text-white px-2.5 py-0.5 rounded bg-yellow-400 transition duration-200 cursor-not-allowed"
+                    >
+                      Pending 
+                    </button>
+                  ) : returnInfo.fine > 0 ? (
+                    <button
+                      onClick={handlePayFine}
+                      className="text-white px-2.5 py-0.5 rounded bg-red-500 hover:bg-red-700 transition duration-200"
+                    >
+                      Pay Fine
+                    </button>
+                  ) : (
+                    <button
+                      disabled
+                      className="text-white px-2.5 py-0.5 rounded bg-gray-400 transition duration-200 cursor-not-allowed"
+                    >
+                      All Clear
+                    </button>
+                  )}
                 </td>
               </tr>
             );

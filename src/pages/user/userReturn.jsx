@@ -38,9 +38,9 @@ export default function UserReturn() {
     return returns.find((r) => r.borrowId === borrowId);
   };
 
-  const handlePayFine = () => {
-    navigate("/fine",
-    )}; 
+  const handlePayFine = (returnId) => {
+    navigate(`/fine/${returnId}`);
+  };  
 
   if (loading) {
     return (
@@ -134,7 +134,7 @@ export default function UserReturn() {
                     </button>
                   ) : returnInfo.fine > 0 ? (
                     <button
-                      onClick={handlePayFine}
+                      onClick={() => handlePayFine(returnInfo.returnId)}
                       className="text-white px-2.5 py-0.5 rounded bg-red-500 hover:bg-red-700 transition duration-200"
                     >
                       Pay Fine

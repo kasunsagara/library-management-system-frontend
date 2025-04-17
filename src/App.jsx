@@ -10,6 +10,7 @@ import BookOverview from './pages/user/bookOverview'
 import Profile from './components/profile'
 import BorrowBook from './pages/user/borrowBook'
 import ReturnBook from './pages/user/returnBook'
+import PayFine from './pages/user/payFine'
 import { Toaster } from 'react-hot-toast'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/borrowBook" element={<BorrowBook />} />
         <Route path="/returnBook" element={<ReturnBook />} />
+        <Route path="/fine/:returnId" element={<PayFine />} />
     </Routes>
     </BrowserRouter>
     </div>

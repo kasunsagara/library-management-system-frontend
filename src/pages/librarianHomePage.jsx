@@ -7,6 +7,7 @@ import AddBookForm from "./librarian/addBookForm";
 import EditBookForm from "./librarian/editBookForm";
 import LibrarianDashboard from "./librarian/librarianDashboard";
 import LibrarianUsers from "./librarian/librarianUsers";
+import AddLibrarianForm from "./librarian/addLibrarianForm";
 import LibrarianBorrow from "./librarian/librarianBorrow";
 import LibrarianReturn from "./librarian/librarianReturn";
 import { useEffect, useState } from "react";
@@ -93,6 +94,7 @@ export default function LibrarianHomePage() {
             <Route path="/books/addBook" element={<AddBookForm />} />
             <Route path="/books/editBook" element={<EditBookForm />} />
             <Route path="/users" element={<LibrarianUsers />} />
+            <Route path="/users/addLibrarian" element={<AddLibrarianForm />} />
             <Route path="/borrows" element={<LibrarianBorrow />} />
             <Route path="/returns" element={<LibrarianReturn />} />
           </Routes>

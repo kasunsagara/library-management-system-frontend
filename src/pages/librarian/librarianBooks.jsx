@@ -39,12 +39,18 @@ export default function LibrarianBooks() {
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-6 relative">
       <h1 className="text-2xl text-white font-bold mb-4 text-center">Books Records</h1> 
 
+      <div className="absolute top-0 right-0 mr-6 group">
         <Link
-          to={"/librarian/books/addBook"}
-          className="absolute top-0 right-0 mr-6 flex items-center justify-center w-14 h-14 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-700 transition-all"
+          to="/librarian/books/addBook"
+          className="flex items-center justify-center w-14 h-14 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-700 transition-all relative"
         >
           <FaPlus />
+          {/* Tooltip on the left */}
+          <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-xs px-2 py-1 rounded shadow transition-opacity duration-200 whitespace-nowrap">
+            Add Book
+          </span>
         </Link>
+      </div>
 
         {books.length === 0 ? (
           <p className="text-gray-600 mt-4">No books found.</p>

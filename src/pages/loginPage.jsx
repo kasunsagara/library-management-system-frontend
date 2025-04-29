@@ -30,7 +30,7 @@ export default function LoginPage() {
         }
         toast.success('Login successful!');
         localStorage.setItem('token', res.data.token);
-        if (res.data.user.role === 'librarian') {
+        if (res.data.user.role === 'librarian' || res.data.user.role === 'admin') {
           navigate('/librarian');
         } else {
           navigate('/user');

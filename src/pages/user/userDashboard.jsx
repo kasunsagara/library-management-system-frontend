@@ -71,7 +71,7 @@ export default function UserDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-8">
-      <h1 className="text-2xl text-white font-bold mb-4 text-center">Dashboard</h1>
+      <h1 className="text-2xl text-white font-bold mb-4 text-center">My Dashboard Records</h1>
       <div className="grid grid-cols-1 gap-6 justify-items-center">
         {/* Total Books Card */}
         <div className="w-full bg-white rounded-lg shadow-md text-blue-600 p-6 flex items-center max-w-2xl hover:scale-[1.02] transition-transform duration-300">

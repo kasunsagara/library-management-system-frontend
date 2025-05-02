@@ -85,6 +85,11 @@ export default function LibrarianUsers() {
   const currentUserEmail = getCurrentUserEmail();
   const currentUser = userData?.find(user => user.email === currentUserEmail);
 
+  // Only admins see all users; librarians see only normal users
+  const visibleUsers = currentUser?.role === "admin"
+    ? userData
+    : userData?.filter(user => user.role === "user");
+
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-6 relative">
       <h1 className="text-2xl text-white font-bold mb-4 text-center">Users Records</h1>
@@ -126,7 +131,7 @@ export default function LibrarianUsers() {
             </tr>
           </thead>
           <tbody>
-            {userData.map((user, index) => (
+            {visibleUsers.map((user, index) => (
               <tr
                 key={user._id}
                 className={`hover:bg-gray-100 ${

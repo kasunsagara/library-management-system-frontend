@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import uploadMediaToSupabase from '../../utils/mediaUpload';
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function AddLibrarianForm() {
   const [formData, setFormData] = useState({
@@ -10,29 +12,46 @@ export default function AddLibrarianForm() {
     password: ""
   });
   const [profileImageFile, setProfileImageFile] = useState(null);
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
+
+  // Input refs for navigating with Enter
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const fileRef = useRef();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    firstNameRef.current?.focus(); // Autofocus on first field
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleKeyDown = (e, nextRef) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      nextRef?.current?.focus();
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("");
-    setError("");
 
     try {
-      let imageUrl = "https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg"; // default fallback
-      
+      let imageUrl =
+        "https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg";
+
       if (profileImageFile) {
         imageUrl = await uploadMediaToSupabase(profileImageFile);
       }
 
-      const token = localStorage.getItem("token"); // Assumes you store JWT after login
+      const token = localStorage.getItem("token");
 
-      const response = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/users`,
         {
           ...formData,
@@ -46,7 +65,9 @@ export default function AddLibrarianForm() {
         }
       );
 
-      setMessage("Librarian added successfully!");
+      navigate("/librarian/users");
+      toast.success("Librarian added successfully!");
+
       setFormData({
         firstName: "",
         lastName: "",
@@ -54,9 +75,10 @@ export default function AddLibrarianForm() {
         password: ""
       });
       setProfileImageFile(null);
+      firstNameRef.current?.focus();
     } catch (err) {
       console.error("Error adding librarian:", err.response?.data || err.message);
-      setError(err.response?.data?.message || "Failed to add librarian.");
+      toast.error(err.response?.data?.message || "Failed to add librarian.");
     }
   };
 
@@ -72,6 +94,7 @@ export default function AddLibrarianForm() {
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
+              onKeyDown={(e) => handleKeyDown(e, lastNameRef)}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
@@ -80,10 +103,12 @@ export default function AddLibrarianForm() {
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium mb-1">Last Name</label>
             <input
+              ref={lastNameRef}
               type="text"
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
+              onKeyDown={(e) => handleKeyDown(e, emailRef)}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
@@ -92,10 +117,12 @@ export default function AddLibrarianForm() {
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium mb-1">Email</label>
             <input
+              ref={emailRef}
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              onKeyDown={(e) => handleKeyDown(e, passwordRef)}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
@@ -104,10 +131,12 @@ export default function AddLibrarianForm() {
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium mb-1">Password</label>
             <input
+              ref={passwordRef}
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
+              onKeyDown={(e) => handleKeyDown(e, fileRef)}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
@@ -116,6 +145,7 @@ export default function AddLibrarianForm() {
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium mb-1">Profile Picture</label>
             <input
+              ref={fileRef}
               type="file"
               accept="image/*"
               onChange={(e) => {
@@ -134,14 +164,6 @@ export default function AddLibrarianForm() {
             Add Librarian
           </button>
         </form>
-
-        {message && (
-          <div className="mt-4 text-green-600 text-center font-medium">{message}</div>
-        )}
-
-        {error && (
-          <div className="mt-4 text-red-600 text-center font-medium">{error}</div>
-        )}
       </div>
     </div>
   );

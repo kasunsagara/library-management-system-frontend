@@ -59,7 +59,7 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyDown={(e) => { handleKeyDown(e, passwordRef); }}
-              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
             />
           </div>
@@ -81,7 +81,7 @@ export default function LoginPage() {
                   login();
                 }
               }}
-              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
             />
           </div>

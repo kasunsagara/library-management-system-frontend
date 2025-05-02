@@ -62,27 +62,27 @@ export default function PayFine() {
       </div>
       <div className="space-y-4">
         <div>
-          <label className="block mb-1 font-medium">Credit Card Number</label>
+          <label className="block mb-1 font-medium mb-1">Credit Card Number</label>
           <input
             type="text"
-            className="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2 rounded-md"
+            className="w-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 px-3 py-2 rounded-md"
             placeholder="1234 5678 9012 3456"
           />
         </div>
         <div className="flex gap-4">
           <div className="flex-1">
-            <label className="block mb-1 font-medium">Expiry Date</label>
+            <label className="block mb-1 font-medium mb-1">Expiry Date</label>
             <input
               type="text"
-              className="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2 rounded-md"
+              className="w-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 px-3 py-2 rounded-md"
               placeholder="MM/YY"
             />
           </div>
           <div className="flex-1">
-            <label className="block mb-1 font-medium">CVV</label>
+            <label className="block mb-1 font-medium mb-1">CVV</label>
             <input
               type="password"
-              className="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2 rounded-md"
+              className="w-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 px-3 py-2 rounded-md"
               placeholder="123"
             />
           </div>

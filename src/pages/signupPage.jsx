@@ -90,7 +90,7 @@ export default function SignupPage() {
               value={formData.firstName}
               onChange={handleChange}
               onKeyDown={(e) => handleKeyDown(e, lastNameRef)}
-              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
               ref={firstNameRef}
             />
@@ -106,7 +106,7 @@ export default function SignupPage() {
               value={formData.lastName}
               onChange={handleChange}
               onKeyDown={(e) => handleKeyDown(e, emailRef)}
-              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
               ref={lastNameRef}
             />
@@ -122,7 +122,7 @@ export default function SignupPage() {
               value={formData.email}
               onChange={handleChange}
               onKeyDown={(e) => handleKeyDown(e, passwordRef)}
-              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
               ref={emailRef}
             />
@@ -138,7 +138,7 @@ export default function SignupPage() {
               value={formData.password}
               onChange={handleChange}
               onKeyDown={(e) => handleKeyDown(e, profilePictureRef)}
-              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
               ref={passwordRef}
             />
@@ -157,7 +157,7 @@ export default function SignupPage() {
                   setProfileImageFile(e.target.files[0]);
                 }
               }}
-              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-3 border border-blue-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
               ref={profilePictureRef}
             />
           </div>

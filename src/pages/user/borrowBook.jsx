@@ -143,14 +143,14 @@ export default function BorrowBookForm() {
         )}
 
         <div className="mb-4">
-          <label htmlFor="name" className="block font-medium text-gray-700">
+          <label htmlFor="name" className="block font-medium text-gray-700 mb-1">
             Full Name
           </label>
           <input
             id="name"
             ref={nameRef}
             type="text"
-            className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2"
+            className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500 px-3 py-2"
             value={name}
             onChange={(e) => setName(e.target.value)}
             onKeyDown={(e) => { handleKeyDown(e, addressRef); }}
@@ -158,13 +158,13 @@ export default function BorrowBookForm() {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="address" className="block font-medium text-gray-700">
+          <label htmlFor="address" className="block font-medium text-gray-700 mb-1">
             Address
           </label>
           <textarea
             id="address"
             ref={addressRef}
-            className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2"
+            className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500 px-3 py-2"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             onKeyDown={(e) => { handleKeyDown(e, phoneRef); }}
@@ -172,14 +172,14 @@ export default function BorrowBookForm() {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="phone" className="block font-medium text-gray-700">
+          <label htmlFor="phone" className="block font-medium text-gray-700 mb-1">
             Phone Number
           </label>
           <input
             id="phone"
             ref={phoneRef}
             type="text"
-            className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent px-3 py-2"
+            className="mt-1 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500 px-3 py-2"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />

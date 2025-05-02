@@ -61,63 +61,63 @@ export default function EditBookForm() {
         </h1>
         <div className="space-y-4">
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Book ID</label>
+            <label className="text-gray-700 font-medium mb-1">Book ID</label>
             <input
               disabled
               type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
               value={bookId}
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Book Name</label>
+            <label className="text-gray-700 font-medium mb-1">Book Name</label>
             <input
               type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
               value={bookName}
               onChange={(e) => setBookName(e.target.value)}
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Author Name</label>
+            <label className="text-gray-700 font-medium mb-1">Author Name</label>
             <input
               type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
               value={authorName}
               onChange={(e) => setAuthorName(e.target.value)}
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Published Date</label>
+            <label className="text-gray-700 font-medium mb-1">Published Date</label>
             <input
               type="date"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
               value={publishedDate}
               onChange={(e) => setPublishedDate(e.target.value)}
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Upload Images</label>
+            <label className="text-gray-700 font-medium mb-1">Upload Images</label>
             <input
               type="file"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
               onChange={(e) => setImageFiles(e.target.files)}
               multiple
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Stock</label>
+            <label className="text-gray-700 font-medium mb-1">Stock</label>
             <input
               type="number"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
               value={stock}
               onChange={(e) => setStock(e.target.value)}
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Description</label>
+            <label className="text-gray-700 font-medium mb-1">Description</label>
             <textarea
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />

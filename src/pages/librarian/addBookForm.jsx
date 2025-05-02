@@ -68,83 +68,83 @@ export default function AddBookForm() {
         <h1 className="text-3xl font-bold text-gray-800 text-center mb-8">Add Book</h1>
         <div className="space-y-6">
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Book ID</label>
+            <label className="text-gray-700 font-medium mb-1">Book ID</label>
             <input
               type="text"
               value={bookId}
               onChange={(e) => setBookId(e.target.value)}
               onKeyDown={(e) => handleKeyDown(e, bookNameRef)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Book Name</label>
+            <label className="text-gray-700 font-medium mb-1">Book Name</label>
             <input
               type="text"
               value={bookName}
               onChange={(e) => setBookName(e.target.value)}
               onKeyDown={(e) => handleKeyDown(e, authorRef)}
               ref={bookNameRef}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Author Name</label>
+            <label className="text-gray-700 font-medium mb-1">Author Name</label>
             <input
               type="text"
               value={authorName}
               onChange={(e) => setAuthorName(e.target.value)}
               onKeyDown={(e) => handleKeyDown(e, dateRef)}
               ref={authorRef}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Published Date</label>
+            <label className="text-gray-700 font-medium mb-1">Published Date</label>
             <input
               type="date"
               value={publishedDate}
               onChange={(e) => setPublishedDate(e.target.value)}
               onKeyDown={(e) => handleKeyDown(e, imageRef)}
               ref={dateRef}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Image Upload</label>
+            <label className="text-gray-700 font-medium mb-1">Image Upload</label>
             <input
               type="file"
               onChange={(e) => setImageFiles(e.target.files)}
               onKeyDown={(e) => handleKeyDown(e, stockRef)}
               ref={imageRef}
               multiple
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Stock</label>
+            <label className="text-gray-700 font-medium mb-1">Stock</label>
             <input
               type="number"
               value={stock}
               onChange={(e) => setStock(e.target.value)}
               onKeyDown={(e) => handleKeyDown(e, descriptionRef)}
               ref={stockRef}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-gray-700 font-medium">Description</label>
+            <label className="text-gray-700 font-medium mb-1">Description</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               ref={descriptionRef}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
           </div>
 

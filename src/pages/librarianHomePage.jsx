@@ -38,7 +38,7 @@ export default function LibrarianHomePage() {
   }, [navigate]);
 
   return (
-    <div className="bg-gray-100 w-full h-screen flex">
+    <div className="w-full h-screen flex">
       {/* Sidebar */}
       <div className="w-[20%] h-screen bg-blue-600  flex flex-col items-center py-8 shadow-lg">
         <img

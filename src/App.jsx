@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/homePage'
@@ -14,7 +13,6 @@ import PayFine from './pages/user/payFine'
 import { Toaster } from 'react-hot-toast'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className='bg-primary'>

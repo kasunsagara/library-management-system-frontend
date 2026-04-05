@@ -1,5 +1,5 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../components/header";
 import Welcome from "../components/welcome";
 import { FaChartBar, FaBook, FaUsers, FaHandHolding, FaUndo } from "react-icons/fa";
 import LibrarianBooks from "./librarian/librarianBooks";

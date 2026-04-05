@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import BookCard from "../../components/BookCard"; // Adjust path if needed
+import BookCard from "../../components/bookCard"; // Adjust path if needed
 
 export default function UserBooks() {
   const [books, setBooks] = useState([]);
